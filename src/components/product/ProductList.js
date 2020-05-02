@@ -12,12 +12,8 @@ export default function ProductList({ products, addItemToCart }) {
       <Container>
         <Row md={3}>
           {products.map(product => (
-            <Col>
-              <Product
-                key={product.name}
-                product={product}
-                handleAddToCart={addItemToCart}
-              />
+            <Col key={product.name}>
+              <Product product={product} handleAddToCart={addItemToCart} />
             </Col>
           ))}
         </Row>

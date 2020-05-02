@@ -20,6 +20,7 @@ export default function Header() {
           <Nav.Link href="/">Inicio</Nav.Link>
           <Nav.Link href="/contacts">Contactos</Nav.Link>
           <Nav.Link href="/products">Loja</Nav.Link>
+          <Nav.Link href="/manager">Manager</Nav.Link>
         </Nav>
       </Navbar>
     </div>
