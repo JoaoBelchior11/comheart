@@ -1,0 +1,53 @@
+get All Products
+
+GET to:
+https://europe-west1-comheart-c886a.cloudfunctions.net/api/products
+
+--------------------------------------------------------------------
+
+add one Product
+
+POST to:
+
+https://europe-west1-comheart-c886a.cloudfunctions.net/api/add/product
+
+with example {
+    	"name": "Boneca",
+	"price": 9,
+	"quantityAvailable": 2,
+	"imgUrl": "",
+	"text": "Isto é uma nova boneca"
+}
+
+---------------------------------------------------------------------
+
+edit one Product
+
+POST to:
+
+https://europe-west1-comheart-c886a.cloudfunctions.net/api/edit/product
+
+with example:
+
+{
+	"productId": "dcP1MQSwtFJQeTf9LD5x",
+	"name": "Boneca",
+	"price": 9,
+	"quantityAvailable": 2,
+	"imgUrl": "",
+	"text": "Isto é uma nova boneca"
+}
+
+-------------------------------------------------------------------
+
+delete one product
+
+POST to:
+
+https://europe-west1-comheart-c886a.cloudfunctions.net/api/delete/product
+
+with example:
+
+{
+	"productId": "dcP1MQSwtFJQeTf9LD5x"
+}
