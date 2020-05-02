@@ -1,8 +1,6 @@
 import "bootstrap/dist/css/bootstrap.css";
 import React, { useEffect, useState } from "react";
-import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import Contacts from "./components/Contacts";
@@ -10,7 +8,6 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import Manager from "./components/management/Manager";
 import ProductList from "./components/product/ProductList";
-import ShoppingCart from "./components/shopping-cart/ShoppingCart";
 import productsRef from "./services/Firebase";
 
 function App() {
@@ -24,8 +21,13 @@ function App() {
       let newProducts = Object.values(productsFromDB);
       setProducts(newProducts);
     });
+  }, []);
 
-    calculateShoppingTotal();
+  useEffect(() => {
+    let total = cartItems.reduce((acc, item) => {
+      return acc + parseFloat(item.price) * parseFloat(item.quantity);
+    }, 0);
+    setTotalToPay(total);
   }, [cartItems]);
 
   function addNewProduct(newProduct) {
@@ -55,13 +57,6 @@ function App() {
     setCartItems(newCartItems);
   }
 
-  function calculateShoppingTotal() {
-    let total = cartItems.reduce((acc, item) => {
-      return acc + parseFloat(item.price) * parseFloat(item.quantity);
-    }, 0);
-    setTotalToPay(total);
-  }
-
   function deleteProduct(item) {
     let index = products.indexOf(item);
     const productsArray = [...products];
@@ -75,38 +70,31 @@ function App() {
       <Header cartItems={cartItems} totalToPay={totalToPay} />
 
       <Container>
-        {/* <Row> */}
-            {/* <Col xs={9}> */}
-              <Route exact path="/" component={Home} />
-              <Route exact path="/contacts" component={Contacts} />
-              <Route
-                exact
-                path="/products"
-                component={() => (
-                  <ProductList
-                    addItemToCart={addItemToCart}
-                    products={products}
-                    cartItems={cartItems}
-                    totalPrice={totalToPay}
-                  />
-                )}
-              />
-              <Route
-                exact
-                path="/manager"
-                component={() => (
-                  <Manager
-                    products={products}
-                    deleteProduct={item => deleteProduct(item)}
-                    addNewProduct={item => addNewProduct(item)}
-                  />
-                )}
-              />
-            {/* </Col> */}
-          {/* <Col xs={2} md={3}>
-            <ShoppingCart cartItems={cartItems} totalPrice={totalToPay} />
-          </Col> */}
-        {/* </Row> */}
+        <Route exact path="/" component={Home} />
+        <Route exact path="/contacts" component={Contacts} />
+        <Route
+          exact
+          path="/products"
+          component={() => (
+            <ProductList
+              addItemToCart={addItemToCart}
+              products={products}
+              cartItems={cartItems}
+              totalPrice={totalToPay}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/manager"
+          component={() => (
+            <Manager
+              products={products}
+              deleteProduct={item => deleteProduct(item)}
+              addNewProduct={item => addNewProduct(item)}
+            />
+          )}
+        />
       </Container>
       </Router>
     </>
