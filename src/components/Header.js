@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+import { Nav, Navbar } from "react-bootstrap";
 import { comheartLogo } from "../images/imagesUrl";
 
-export default function Header() {
+export default function Header({ cartItems, totalToPay }) {
   return (
     <div>
       <Navbar bg="primary" variant="dark">
