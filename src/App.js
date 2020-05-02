@@ -72,11 +72,11 @@ function App() {
   return (
     <>
     <Router>
-      <Header />
+      <Header cartItems={cartItems} totalToPay={totalToPay} />
 
       <Container>
-        <Row>
-            <Col xs={9}>
+        {/* <Row> */}
+            {/* <Col xs={9}> */}
               <Route exact path="/" component={Home} />
               <Route exact path="/contacts" component={Contacts} />
               <Route
@@ -84,8 +84,10 @@ function App() {
                 path="/products"
                 component={() => (
                   <ProductList
-                    addItemToCart={item => addItemToCart(item)}
+                    addItemToCart={addItemToCart}
                     products={products}
+                    cartItems={cartItems}
+                    totalPrice={totalToPay}
                   />
                 )}
               />
@@ -100,11 +102,11 @@ function App() {
                   />
                 )}
               />
-            </Col>
-          <Col xs={2} md={3}>
+            {/* </Col> */}
+          {/* <Col xs={2} md={3}>
             <ShoppingCart cartItems={cartItems} totalPrice={totalToPay} />
-          </Col>
-        </Row>
+          </Col> */}
+        {/* </Row> */}
       </Container>
       </Router>
     </>
