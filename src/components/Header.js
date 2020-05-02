@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { comheartLogo } from "../images/imagesUrl";
@@ -17,10 +18,10 @@ export default function Header() {
           />
         </Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link href="/">Inicio</Nav.Link>
-          <Nav.Link href="/contacts">Contactos</Nav.Link>
-          <Nav.Link href="/products">Loja</Nav.Link>
-          <Nav.Link href="/manager">Manager</Nav.Link>
+          <Nav.Link as={Link} to="/">Inicio</Nav.Link>
+          <Nav.Link as={Link} to="/contacts">Contactos</Nav.Link>
+          <Nav.Link as={Link} to="/products">Loja</Nav.Link>
+          <Nav.Link as={Link} to="/manager">Manager</Nav.Link>
         </Nav>
       </Navbar>
     </div>

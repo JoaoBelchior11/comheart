@@ -71,11 +71,11 @@ function App() {
 
   return (
     <>
+    <Router>
       <Header />
 
       <Container>
         <Row>
-          <Router>
             <Col xs={9}>
               <Route exact path="/" component={Home} />
               <Route exact path="/contacts" component={Contacts} />
@@ -101,12 +101,12 @@ function App() {
                 )}
               />
             </Col>
-          </Router>
           <Col xs={2} md={3}>
             <ShoppingCart cartItems={cartItems} totalPrice={totalToPay} />
           </Col>
         </Row>
       </Container>
+      </Router>
     </>
   );
 }
